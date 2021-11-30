@@ -39,6 +39,15 @@ jobs:
           STACK_NAME: createvpc-dev
           TEMPLATE_NAME: template.yaml
         run: |
+          aws cloudformation package \
+          --template  ${TEMPLATE_NAME} \
+          --s3-bucket mybucket \
+          --output json > packaged-template.json
+          && aws cloudformation deploy \
+          --stack-name ${STACK_NAME} \
+          --template-file packaged-template.json \
+          --parameter-overrides Environment=development \
+          --no-fail-on-empty-changeset
           aws cloudformation deploy \
           --stack-name ${STACK_NAME} \
           --template-file ${TEMPLATE_NAME} \
