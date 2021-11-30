@@ -41,7 +41,7 @@ jobs:
         run: |
           aws cloudformation deploy \
           --stack-name ${STACK_NAME} \
-          -- template-file ${TEMPLATE_NAME} \
+          --template-file ${TEMPLATE_NAME} \
           --parameter-overrides Environment=development \
           --no-fail-on-empty-changeset
 
