@@ -48,9 +48,4 @@ jobs:
           --template-file packaged-template.json \
           --parameter-overrides Environment=development \
           --no-fail-on-empty-changeset
-          aws cloudformation deploy \
-          --stack-name ${STACK_NAME} \
-          --template-file ${TEMPLATE_NAME} \
-          --parameter-overrides Environment=development \
-          --no-fail-on-empty-changeset
 
