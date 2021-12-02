@@ -39,5 +39,6 @@ jobs:
         with:
           name: ReactBlogAPI
           template: template.yaml
+          no-fail-on-empty-changeset: "1"
 
 
