@@ -34,11 +34,19 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
+      - name: package Stack
+        run: |
+           aws cloudformation package \
+           --template  template.yaml \
+           --s3-bucket mybucket \
+           --output json > packaged-template.yaml
+      - name: look package
+        run: ls -la
       - name: DeployCloudformation Stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
         with:
           name: ReactBlogAPI
-          template: template.yaml
+          template: packaged-template.yaml
           no-fail-on-empty-changeset: "1"
           capabilities: CAPABILITY_AUTO_EXPAND 
 
