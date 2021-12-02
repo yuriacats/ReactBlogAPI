@@ -40,5 +40,6 @@ jobs:
           name: ReactBlogAPI
           template: template.yaml
           no-fail-on-empty-changeset: "1"
+          parameter-overrides: capabilities=CAPABILITY_AUTO_EXPAND
 
 
