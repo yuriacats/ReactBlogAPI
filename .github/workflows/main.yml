@@ -34,14 +34,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
-      - name: Deploy Cloudformation Stack
-        env:
-          STACK_NAME: createvpc-dev
-          TEMPLATE_NAME: template.yaml
-        run: |
-          aws cloudformation package \
-          --template  ${TEMPLATE_NAME} \
-          --s3-bucket mybucket \
-          --output json > packaged-template.json
+      - name: DeployCloudformation Stack
+        uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
+        with:
+          name: ReactBlogAPI
+          template: template.yaml
 
 
