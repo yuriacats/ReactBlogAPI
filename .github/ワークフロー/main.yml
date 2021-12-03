@@ -36,7 +36,7 @@ jobs:
           aws-region: ap-northeast-1
       - name: package Stack
         run: |
-           aws cloudformation package \
+            aws cloudformation package \
            --template  template.yaml \
            --s3-bucket mybucket \
            --output json > packaged-template.yaml
