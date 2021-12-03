@@ -40,7 +40,7 @@ jobs:
            --template  template.yaml \
            --s3-bucket mybucket \
            --output json > packaged-template.yaml- name: look package
-      - name: look package
+      - name: look at package
         run: ls -la
       - name: DeployCloudformation Stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
