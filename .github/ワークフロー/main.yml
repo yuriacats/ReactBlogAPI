@@ -39,7 +39,7 @@ jobs:
            aws cloudformation package \
            --template  template.yaml \
            --s3-bucket mybucket \
-           --output json > packaged-template.yaml
+           --output json > packaged-template.yaml- name: look package
       - name: look package
         run: ls -la
       - name: DeployCloudformation Stack
