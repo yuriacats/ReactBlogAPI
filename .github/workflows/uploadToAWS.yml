@@ -38,7 +38,6 @@ jobs:
         run: |
             aws cloudformation package \
             --template template.yaml \
-            --s3-bucket mybucket \
             --output json > packaged-template.yaml
       - name: look at package
         run: ls -la
