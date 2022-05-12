@@ -54,28 +54,6 @@ Resources:
             Stream: !GetAtt DynamoDBTable.StreamArn
             BatchSize: 100
             StartingPosition: TRIM_HORIZON
-  PutPostFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: put-post/
-      Handler: app.lambdaHandler
-      Runtime: nodejs14.x
-      Environment:
-        Variables:
-          TableName: !Ref DynamoDBTable
-      Events:
-        PostsListGet:
-          Type: Api
-          Properties:
-            Path: /post/{post_id}
-            Method: put
-        Stream:
-          Type: DynamoDB
-          Properties:
-            Stream: !GetAtt DynamoDBTable.StreamArn
-            BatchSize: 100
-            StartingPosition: TRIM_HORIZON
-
 
 
   DynamoDBTable:
