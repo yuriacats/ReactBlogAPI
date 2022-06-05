@@ -1,8 +1,23 @@
 let response;
-const AWS = require('aws-sdk');
-AWS.config.update({region:'ap-northeast-1'});
+//const AWS = require('aws-sdk');
+//AWS.config.update({region:'ap-northeast-1'});
 
 exports.lambdaHandler = async(event,context) =>{
+    response ={
+        'statusCode': 200,
+        headers: {
+            "Content-type": "application/json;charset=UTF-8",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+        },
+        'body':JSON.stringify({
+            "status":"success"
+        })
+    }
+    return response
+}
+lambdaHandler = async(event,context) =>{
     const dynamo = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10',region:'ap-northeast-1'});
     const tableName = process.env["TableName"];
     const params ={
